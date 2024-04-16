@@ -20,5 +20,11 @@ The following optional packages are required to run Inflam's unit tests:
 - [pytest](https://docs.pytest.org/en/stable/) - Inflam's unit tests are written using pytest
 - [pytest-cov](https://pypi.org/project/pytest-cov/) - Adds test coverage stats to unit testing
 
+## License
+This project is licensed under the BSD 3-Clause License - see the [LICENSE](https://github.com/rortizmerino/python-intermediate-inflammation/blob/develop/LICENSE) file for details.
+
+
 # Inflam
 ![Continuous Integration build in GitHub Actions](https://github.com/rortizmerino/python-intermediate-inflammation/actions/workflows/main.yml/badge.svg?branch=main)
+
+
