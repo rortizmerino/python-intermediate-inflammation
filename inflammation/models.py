@@ -44,7 +44,15 @@ def daily_above_threshold(patient_num, data, threshold):
     :param patient_num: The patient row number
     :param data: A 2D data array with inflammation data
     :param threshold: An inflammation threshold to check each daily value against
-    :returns: A boolean list representing whether or not each patient's daily inflammation exceeded the threshold
+    :returns: An integer representing the number of days a patient's inflammation is over a given threshold
     """
+    def count_above_threshold(a, b):
+        if b:
+            return a + 1
+        else:
+            return a
 
-    return list(map(lambda x: x > threshold, data[patient_num]))
+   # Use map to determine if each daily inflammation value exceeds a given threshold for a patient
+   above_threshold = map(lambda x: x > threshold, data[patient_num])
+   # Use reduce to count on how many days inflammation was above the threshold for a patient
+   return reduce(count_above_threshold, above_threshold, 0)
