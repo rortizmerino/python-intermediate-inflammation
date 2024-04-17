@@ -3,6 +3,12 @@
 import numpy as np
 import numpy.testing as npt
 import pytest
+#from ../inflammation import models
+#from inflammation import models
+import inflammation
+
+
+#inflammation_data = models.load_csv(filename)
 
 def test_daily_mean_zeros():
     """Test that mean function works for an array of zeros."""
