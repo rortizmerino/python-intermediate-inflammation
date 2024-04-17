@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>inflammation package &mdash; Inflam 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Inflam
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">inflammation package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-inflammation.models">inflammation.models module</a><ul>
+<li><a class="reference internal" href="#inflammation.models.daily_above_threshold"><code class="docutils literal notranslate"><span class="pre">daily_above_threshold()</span></code></a></li>
+<li><a class="reference internal" href="#inflammation.models.daily_max"><code class="docutils literal notranslate"><span class="pre">daily_max()</span></code></a></li>
+<li><a class="reference internal" href="#inflammation.models.daily_mean"><code class="docutils literal notranslate"><span class="pre">daily_mean()</span></code></a></li>
+<li><a class="reference internal" href="#inflammation.models.daily_min"><code class="docutils literal notranslate"><span class="pre">daily_min()</span></code></a></li>
+<li><a class="reference internal" href="#inflammation.models.daily_std"><code class="docutils literal notranslate"><span class="pre">daily_std()</span></code></a></li>
+<li><a class="reference internal" href="#inflammation.models.load_csv"><code class="docutils literal notranslate"><span class="pre">load_csv()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-inflammation.views">inflammation.views module</a><ul>
+<li><a class="reference internal" href="#inflammation.views.visualize"><code class="docutils literal notranslate"><span class="pre">visualize()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-inflammation">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Inflam</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">inflammation package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/inflammation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="inflammation-package">
+<h1>inflammation package<a class="headerlink" href="#inflammation-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-inflammation.models">
+<span id="inflammation-models-module"></span><h2>inflammation.models module<a class="headerlink" href="#module-inflammation.models" title="Link to this heading"></a></h2>
+<p>Module containing models representing patients and their data.</p>
+<p>The Model layer is responsible for the ‘business logic’ part of the software.</p>
+<p>Patients’ data is held in an inflammation table (2D array) where each row contains 
+inflammation data for a single patient taken over a number of days 
+and each column represents a single day across all patients.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="inflammation.models.daily_above_threshold">
+<span class="sig-prename descclassname"><span class="pre">inflammation.models.</span></span><span class="sig-name descname"><span class="pre">daily_above_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patient_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inflammation.models.daily_above_threshold" title="Link to this definition"></a></dt>
+<dd><p>Determine whether or not each daily inflammation value exceeds a given threshold for a given patient.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patient_num</strong> – The patient row number</p></li>
+<li><p><strong>data</strong> – A 2D data array with inflammation data</p></li>
+<li><p><strong>threshold</strong> – An inflammation threshold to check each daily value against</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An integer representing the number of days a patient’s inflammation is over a given threshold</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inflammation.models.daily_max">
+<span class="sig-prename descclassname"><span class="pre">inflammation.models.</span></span><span class="sig-name descname"><span class="pre">daily_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inflammation.models.daily_max" title="Link to this definition"></a></dt>
+<dd><p>Calculate the daily max of a 2D inflammation data array.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inflammation.models.daily_mean">
+<span class="sig-prename descclassname"><span class="pre">inflammation.models.</span></span><span class="sig-name descname"><span class="pre">daily_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inflammation.models.daily_mean" title="Link to this definition"></a></dt>
+<dd><p>Calculate the daily mean of a 2D inflammation data array.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inflammation.models.daily_min">
+<span class="sig-prename descclassname"><span class="pre">inflammation.models.</span></span><span class="sig-name descname"><span class="pre">daily_min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inflammation.models.daily_min" title="Link to this definition"></a></dt>
+<dd><p>Calculate the daily min of a 2D inflammation data array.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inflammation.models.daily_std">
+<span class="sig-prename descclassname"><span class="pre">inflammation.models.</span></span><span class="sig-name descname"><span class="pre">daily_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inflammation.models.daily_std" title="Link to this definition"></a></dt>
+<dd><p>Calculate the daily std of a 2D inflammation data array.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inflammation.models.load_csv">
+<span class="sig-prename descclassname"><span class="pre">inflammation.models.</span></span><span class="sig-name descname"><span class="pre">load_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inflammation.models.load_csv" title="Link to this definition"></a></dt>
+<dd><p>Load a Numpy array from a CSV</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> – Filename of CSV to load</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-inflammation.views">
+<span id="inflammation-views-module"></span><h2>inflammation.views module<a class="headerlink" href="#module-inflammation.views" title="Link to this heading"></a></h2>
+<p>Module containing code for plotting inflammation data.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="inflammation.views.visualize">
+<span class="sig-prename descclassname"><span class="pre">inflammation.views.</span></span><span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inflammation.views.visualize" title="Link to this definition"></a></dt>
+<dd><p>Display plots of basic statistical properties of the inflammation data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data_dict</strong> – Dictionary of name -&gt; data to plot</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-inflammation">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-inflammation" title="Link to this heading"></a></h2>
+<p>Package containing the bulk of code for the patient data system.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Raul Ortiz, Selin Kubilay, Job Rosier, Marnix van de Sande.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
