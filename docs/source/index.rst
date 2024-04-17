@@ -11,8 +11,8 @@ Welcome to Inflam's documentation!
    :caption: Contents:
 
 modules
- inflammation
- inflammation-analysis
+inflammation
+inflammation-analysis
 
 Indices and tables
 ==================
