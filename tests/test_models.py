@@ -3,6 +3,12 @@
 import numpy as np
 import numpy.testing as npt
 import pytest
+#from ../inflammation import models
+#from inflammation import models
+import inflammation
+
+
+#inflammation_data = models.load_csv(filename)
 
 def test_daily_mean_zeros():
     """Test that mean function works for an array of zeros."""
@@ -37,11 +43,11 @@ def test_daily_mean_integers():
     ])
 
 
-
 def test_daily_mean(test, expected):
     """Test mean function works for array of zeroes and positive integers."""
     from inflammation.models import daily_mean
     npt.assert_array_equal(daily_mean(np.array(test)), np.array(expected))
+
 
 def test_daily_max():
     """Test that max function works for an array of positive integers."""
@@ -61,10 +67,13 @@ def test_daily_max():
         ([ [4, 2, 5], [1, 6, 2], [4, 1, 9] ], [4, 6, 9]),
         ([ [4, -2, 5], [1, -6, 2], [-4, -1, 9] ], [4, -1, 9]),
     ])
+
+
 def test_daily_max_parametrised(test, expected):
     """Test max function works for zeroes, positive integers, mix of positive/negative integers."""
     from inflammation.models import daily_max
     npt.assert_array_equal(daily_max(np.array(test)), np.array(expected))
+
 
 def test_daily_min():
     """Test that min function works for an array of positive and negative integers."""
@@ -84,10 +93,13 @@ def test_daily_min():
         ([ [4, 2, 5], [1, 6, 2], [4, 1, 9] ], [1, 1, 2]),
         ([ [4, -2, 5], [1, -6, 2], [-4, -1, 9] ], [-4, -6, 2]),
     ])
+
+
 def test_daily_min_parametrised(test, expected):
     """Test min function works for zeroes, positive integers, mix of positive/negative integers."""
     from inflammation.models import daily_min
     npt.assert_array_equal(daily_min(np.array(test)), np.array(expected))
+
 
 def test_daily_min_string():
     """Test for TypeError when passing strings"""
