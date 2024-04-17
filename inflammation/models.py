@@ -52,7 +52,8 @@ def daily_above_threshold(patient_num, data, threshold):
         else:
             return a
 
-   # Use map to determine if each daily inflammation value exceeds a given threshold for a patient
-   above_threshold = map(lambda x: x > threshold, data[patient_num])
+    # Use map to determine if each daily inflammation value exceeds a given threshold for a patient
+    above_threshold = map(lambda x: x > threshold, data[patient_num])
+
    # Use reduce to count on how many days inflammation was above the threshold for a patient
    return reduce(count_above_threshold, above_threshold, 0)
