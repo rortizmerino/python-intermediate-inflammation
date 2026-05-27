@@ -72,4 +72,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
     
     # Run the function using the provided argument
-    analyse_data(args.data_dir)
+    datasource = CSVDataSource (args.data_dir)
+    analyse_data(datasource)
