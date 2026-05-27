@@ -40,8 +40,10 @@ def analyse_data(data_source):
     works out the mean inflammation value for each day across all datasets,
     then plots the graphs of standard deviation of these means."""
     data = data_source.load_inflammation_data()
+    daily_standard_deviation = compute_standard_deviation_by_day(data)
+    return daily_standard_deviation
 
-
+def compute_standard_deviation_by_day(data):
     means_by_day = map(models.daily_mean, data)
     means_by_day_matrix = np.stack(list(means_by_day))
 
@@ -59,15 +61,26 @@ if __name__ == '__main__':
         description="Calculate standard deviation by day between datasets."
     )
     
-    # Add the data_dir argument
     parser.add_argument(
         'data_dir', 
         type=str, 
         help="Path to the directory containing the inflammation CSV files."
+    )
+
+    parser.add_argument(
+        'infiles', 
+        nargs="+",
+        help="Input CSV(s) containing inflammation series"
+    )
+
+    parser.add_argument(
+        "-outdir",
+        help="Output directory to save figures as PNG",
     )
     
     # Parse the arguments from the command line
     args = parser.parse_args()
     
     # Run the function using the provided argument
-    analyse_data(args.data_dir)
+    datasource = CSVDataSource (args.data_dir)
+    analyse_data(datasource)
