@@ -66,17 +66,6 @@ if __name__ == '__main__':
         type=str, 
         help="Path to the directory containing the inflammation CSV files."
     )
-
-    parser.add_argument(
-        'infiles', 
-        nargs="+",
-        help="Input CSV(s) containing inflammation series"
-    )
-
-    parser.add_argument(
-        "-outdir",
-        help="Output directory to save figures as PNG",
-    )
     
     # Parse the arguments from the command line
     args = parser.parse_args()
